@@ -1,5 +1,6 @@
 package com.example.incomingcalls;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +9,8 @@ import android.widget.Toast;
 
 public class IntercepCall extends BroadcastReceiver {
     private static int lastState = TelephonyManager.CALL_STATE_IDLE;
-    private static boolean isIncoming;
 
+    @SuppressLint("UnsafeProtectedBroadcastReceiver")
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
@@ -37,7 +38,7 @@ public class IntercepCall extends BroadcastReceiver {
 
         switch (state) {
             case TelephonyManager.CALL_STATE_RINGING:
-                isIncoming = true;
+                boolean isIncoming = true;
 
                 break;
             case TelephonyManager.CALL_STATE_OFFHOOK:
